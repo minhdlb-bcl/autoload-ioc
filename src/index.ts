@@ -1,5 +1,5 @@
 import express from "express";
-import { Container, injectable } from "inversify";
+import { Container } from "inversify";
 import "reflect-metadata";
 import autoload from "./autoload";
 

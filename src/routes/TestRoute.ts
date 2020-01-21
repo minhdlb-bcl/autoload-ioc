@@ -1,5 +1,5 @@
 import express, { IRoute } from "express";
-import { inject, injectable } from "inversify";
+import { injectable } from "inversify";
 import TestController from "../controllers/TestController";
 import IRouting from "../interfaces/IRouting";
 

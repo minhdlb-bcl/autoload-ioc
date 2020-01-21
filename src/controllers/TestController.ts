@@ -1,5 +1,5 @@
 import express from "express";
-import { inject, injectable } from "inversify";
+import { injectable } from "inversify";
 import IBase from "../interfaces/IBase";
 import TestService from "../services/TestService";
 
