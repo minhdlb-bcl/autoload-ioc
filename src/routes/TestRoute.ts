@@ -1,10 +1,10 @@
-import express from "express";
+import express, { IRoute } from "express";
 import { inject, injectable } from "inversify";
 import TestController from "../controllers/TestController";
-import IBase from "../interfaces/IBase";
+import IRouting from "../interfaces/IRouting";
 
 @injectable()
-class TestRoute implements IBase {
+class TestRoute implements IRouting {
     public testController: TestController;
     public constructor(testController: TestController) {
         this.testController = testController;

@@ -1,13 +1,11 @@
+import express from "express";
 import glob from "glob";
 import { Container } from "inversify";
 import path from "path";
 import IBase from "./interfaces/IBase";
+import IRouting from "./interfaces/IRouting";
 
-import TestController from "./controllers/TestController";
-import TestRoute from "./routes/TestRoute";
-import TestService from "./services/TestService";
-
-export default async function autoload(container: Container): Promise<void> {
+export default async function autoload(app: express.Express, container: Container): Promise<void> {
     await glob.sync("**/services/*.js").map(async (file) => {
         const injectClass = await import(path.resolve(file));
         container.bind<IBase>(injectClass.default).toSelf().inSingletonScope();
@@ -20,13 +18,8 @@ export default async function autoload(container: Container): Promise<void> {
 
     await glob.sync("**/routes/*.js").map(async (file) => {
         const injectClass = await import(path.resolve(file));
-        container.bind<IBase>(injectClass.default).toSelf().inSingletonScope();
+        container.bind<IRouting>(injectClass.default).toSelf().inSingletonScope();
+        const route: IRouting = container.resolve(injectClass.default);
+        route.routeRegister(app);
     });
-
-    const testService = container.resolve(TestService);
-    console.log("testService ===>", testService);
-    const testController = container.resolve(TestController);
-    console.log("testController ===>", testController);
-    const testRoute = container.resolve(TestRoute);
-    console.log("testRoute ===>", testRoute);
 }

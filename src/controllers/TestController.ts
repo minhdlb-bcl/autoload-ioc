@@ -14,7 +14,7 @@ class TestController implements IBase {
         return res
             .status(200)
             .json({
-                messge: this.testService.getMessage("Infinity Block Chain Labs")
+                messge: this.testService.getMessage("Inversify IoC In NodeJS")
             });
     }
 }
