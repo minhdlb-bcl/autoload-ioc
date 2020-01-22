@@ -6,17 +6,20 @@
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
-    "prestart": "npm run build",
-    "start": "node .",
+    "prod": "rm -rf dist && npm run build && node .",
+    "start": "nodemon src/index.ts",
+    "dev": "nodemon --inspect src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Do Lam Binh Minh",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "inversify": "^5.0.1",
-    "reflect-metadata": "^0.1.13"
+    "nodemon": "^2.0.2",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^8.6.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
