@@ -18,7 +18,8 @@
             "name": "Remote Debug",
             "processId": "${command:PickProcess}",
             "restart": true,
-            "protocol": "inspector"
+            "protocol": "inspector",
+            "port": 8001
         }
     ]
 }

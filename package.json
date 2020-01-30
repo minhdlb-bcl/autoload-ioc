@@ -8,7 +8,7 @@
     "build": "tsc",
     "prod": "rm -rf dist && npm run build && node .",
     "start": "nodemon src/index.ts",
-    "dev": "nodemon --inspect src/index.ts",
+    "dev": "nodemon --inspect=8001 src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
